@@ -3,6 +3,32 @@ window.addEventListener('load',function(){
   const ctx = canvas.getContext('2d')
   canvas.width = 800
   canvas.height = 720
-  // const player = document.getElementById('playeImage')
-  // const bg = document.getElementById('background')
+  
+  class InputHandler{
+
+  }
+
+  class Player{
+
+  }
+
+  class  Background {
+
+  }
+  
+  class Enemy {
+
+  }
+
+ function handleEnemy(){
+
+ }
+
+ function displayStatusText(){
+
+ }
+
+ function animate(){
+  
+ }
 })
