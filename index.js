@@ -61,7 +61,13 @@ window.addEventListener("load", function () {
 
   const input = new InputHandler();
   const player = new Player(canvas.width,canvas.height)
-  player.draw(ctx)
+  // player.draw(ctx)
+  // player.upadte()
 
-  function animate() {}
+  function animate() {
+    player.draw(ctx)
+    player.upadte()
+    requestAnimationFrame(animate)
+  }
+  animate()
 });
