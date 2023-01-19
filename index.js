@@ -34,12 +34,17 @@ window.addEventListener("load", function () {
   }
 
   class Player {
-    constructor(gameWidth,gameHeight){
-      this.gameWidth = gameWidth
-      this.gameHeight = gameHeight
-      this.width = width
-      this.height = height
-
+    constructor(gameWidth, gameHeight) {
+      this.gameWidth = gameWidth;
+      this.gameHeight = gameHeight;
+      this.width = width;
+      this.height = height;
+      this.x = 0;
+      this.y = 0;
+    }
+    draw(contex){
+      context.fillStyle ='white'
+     contex.fillRect(this.x,this.y,this.width,this.height)
     }
   }
 
@@ -52,6 +57,7 @@ window.addEventListener("load", function () {
   function displayStatusText() {}
 
   const input = new InputHandler();
+  const player = new Player(canvas.width,canvas.height)
 
   function animate() {}
 });
