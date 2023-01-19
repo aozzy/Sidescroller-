@@ -37,14 +37,17 @@ window.addEventListener("load", function () {
     constructor(gameWidth, gameHeight) {
       this.gameWidth = gameWidth;
       this.gameHeight = gameHeight;
-      this.width = width;
-      this.height = height;
+      this.width = 200;
+      this.height = 200;
       this.x = 0;
-      this.y = 0;
+      this.y = this.gameHeight - this.height;
     }
-    draw(contex){
+    draw(context){
       context.fillStyle ='white'
-     contex.fillRect(this.x,this.y,this.width,this.height)
+     context.fillRect(this.x,this.y,this.width,this.height)
+    }
+    upadte(){
+      this.x++
     }
   }
 
@@ -58,6 +61,7 @@ window.addEventListener("load", function () {
 
   const input = new InputHandler();
   const player = new Player(canvas.width,canvas.height)
+  player.draw(ctx)
 
   function animate() {}
 });
