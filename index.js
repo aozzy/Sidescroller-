@@ -1,56 +1,49 @@
-window.addEventListener('load',function(){
-  const canvas = document.getElementById('canvas1')
-  const ctx = canvas.getContext('2d')
-  canvas.width = 800
-  canvas.height = 720
-  
-  class InputHandler{
-   constructor(){
-    this.keys = []
-    window.addEventListener('keydown',e=>{
-      if (e.key === 'ArrowDown' && this.keys.indexOf(e.key) === -1){
-        
-        this.keys.push(e.key)
-        
-      }
-      console.log(e.key,this.keys);
+window.addEventListener("load", function () {
+  const canvas = document.getElementById("canvas1");
+  const ctx = canvas.getContext("2d");
+  canvas.width = 800;
+  canvas.height = 720;
 
-    })
-    window.addEventListener('keyup',e=>{
-      if (e.key === 'ArrowDown'){
-        
-        this.keys.splice(this.keys.indexOf(e.key),1)
-        
-      }
-      console.log(e.key,this.keys);
-
-    })
-   }
+  class InputHandler {
+    constructor() {
+      this.keys = [];
+      window.addEventListener("keydown", (e) => {
+        if (
+          (e.key === "ArrowDown" ||
+            e.key === "ArrowUp" ||
+            e.key === "ArrowLeft" ||
+            e.key === "ArrowRight") &&
+          this.keys.indexOf(e.key) === -1
+        ) {
+          this.keys.push(e.key);
+        }
+        // console.log(e.key, this.keys,'hello');
+      });
+      window.addEventListener("keyup", (e) => {
+        if (
+          e.key === "ArrowDown" ||
+          e.key === "ArrowUp" ||
+          e.key === "ArrowLeft" ||
+          e.key === "ArrowRight"
+        ) {
+          this.keys.splice(this.keys.indexOf(e.key), 1);
+        }
+        // console.log(e.key, this.keys,'goodbye');
+      });
+    }
   }
 
-  class Player{
+  class Player {}
 
-  }
+  class Background {}
 
-  class  Background {
+  class Enemy {}
 
-  }
-  
-  class Enemy {
+  function handleEnemy() {}
 
-  }
+  function displayStatusText() {}
 
- function handleEnemy(){
+  const input = new InputHandler();
 
- }
-
- function displayStatusText(){
-
- }
-
- const input = new InputHandler()
-
- function animate(){
-  
- }
-})
+  function animate() {}
+});
