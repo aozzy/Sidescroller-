@@ -33,7 +33,15 @@ window.addEventListener("load", function () {
     }
   }
 
-  class Player {}
+  class Player {
+    constructor(gameWidth,gameHeight){
+      this.gameWidth = gameWidth
+      this.gameHeight = gameHeight
+      this.width = width
+      this.height = height
+
+    }
+  }
 
   class Background {}
 
