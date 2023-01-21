@@ -52,8 +52,8 @@ window.addEventListener("load", function () {
      context.drawImage(this.image,this.frameX * this.width,this.frameX * this.height,this.width,this.height,this.x,this.y,this.width,this.height)
     //  1 * this.height,this.width,this.height,this.x,this.y,this.width,this.height
     }
-    upadte(){
-      // this.x++
+    upadte(input){
+      this.x += this.speed
     }
   }
 
