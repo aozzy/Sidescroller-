@@ -44,14 +44,16 @@ window.addEventListener("load", function () {
       this.image = document.getElementById('playerImage')
       this.frameX = 0
       this.frameY = 0
+      this.speed = 0
     }
     draw(context){
       context.fillStyle ='white'
      context.fillRect(this.x,this.y,this.width,this.height)
-     context.drawImage(this.image,this.frameX * this.width,1 * this.height,this.width,this.height,this.x,this.y,this.width,this.height)
+     context.drawImage(this.image,this.frameX * this.width,this.frameX * this.height,this.width,this.height,this.x,this.y,this.width,this.height)
+    //  1 * this.height,this.width,this.height,this.x,this.y,this.width,this.height
     }
     upadte(){
-      this.x++
+      // this.x++
     }
   }
 
