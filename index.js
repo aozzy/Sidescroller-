@@ -54,6 +54,9 @@ window.addEventListener("load", function () {
     }
     upadte(input){
       this.x += this.speed
+      if (input.keys.indexOf('ArrowUp') > -1){
+        
+      }
     }
   }
 
@@ -73,7 +76,7 @@ window.addEventListener("load", function () {
   function animate() {
     ctx.clearRect(0,0,canvas.width,canvas.height)
     player.draw(ctx)
-    player.upadte()
+    player.upadte(input)
     requestAnimationFrame(animate)
   }
   animate()
