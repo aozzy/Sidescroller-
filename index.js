@@ -54,7 +54,7 @@ window.addEventListener("load", function () {
     //  1 * this.height,this.width,this.height,this.x,this.y,this.width,this.height
     }
     upadte(input){
-      this.x += this.speed
+      
       if (input.keys.indexOf('ArrowRight') > -1){
         this.speed = 5
       } else if (input.keys.indexOf('ArrowLeft') > -1){
@@ -67,6 +67,7 @@ window.addEventListener("load", function () {
       else{
         this.speed = 0
       }
+      this.x += this.speed
       if (this.x < 0 ){
         this.x = 0
       } else if (this.x > this.gameWidth - this.width){
