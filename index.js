@@ -46,6 +46,7 @@ window.addEventListener("load", function () {
       this.frameY = 0
       this.speed = 0
       this.vy = 0
+      this.weight = 0
     }
     draw(context){
       context.fillStyle ='white'
@@ -58,7 +59,7 @@ window.addEventListener("load", function () {
       if (input.keys.indexOf('ArrowRight') > -1){
         this.speed = 5
       } else if (input.keys.indexOf('ArrowLeft') > -1){
-        this.speed = -1
+        this.speed = -5
       }
       else if(input.keys.indexOf('ArrowUp') > -1){
        this.vy  -= 30
@@ -73,8 +74,13 @@ window.addEventListener("load", function () {
       } else if (this.x > this.gameWidth - this.width){
         this.x = this.gameWidth - this.width
       }
-      
+      this.y += this.vy
     }
+     
+    onGround(){
+      return this.y >= this.gameHeight - this.height
+    }
+  
   }
 
   class Background {}
