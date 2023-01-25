@@ -46,7 +46,7 @@ window.addEventListener("load", function () {
       this.frameY = 0
       this.speed = 0
       this.vy = 0
-      this.weight = 0
+      this.weight = 1
     }
     draw(context){
       context.fillStyle ='white'
@@ -62,7 +62,7 @@ window.addEventListener("load", function () {
         this.speed = -5
       }
       else if(input.keys.indexOf('ArrowUp') > -1){
-       this.vy  -= 30
+       this.vy  -= 10
       }
       
       else{
