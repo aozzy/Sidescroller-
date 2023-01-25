@@ -75,6 +75,9 @@ window.addEventListener("load", function () {
         this.x = this.gameWidth - this.width
       }
       this.y += this.vy
+      if(!this.onGround()){
+       this.vy += this.weight
+      }
     }
      
     onGround(){
