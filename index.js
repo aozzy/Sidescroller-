@@ -100,8 +100,17 @@ window.addEventListener("load", function () {
       this.gameWidth = gameWidth
       this.gameHeight = gameHeight
       this.image = document.getElementById('backgroundImage')
+      this.x = 0 
+      this.y = 0
+      this.width = 2400
+      this.height = 720
+     //* this.width is the width of the background image in px this.height is the height
 
 
+
+    }
+    draw(context){
+      context.drawImage(this.image,this.x,this.y)
     }
   }
 
@@ -113,11 +122,13 @@ window.addEventListener("load", function () {
 
   const input = new InputHandler();
   const player = new Player(canvas.width,canvas.height)
+  const background = new Background(canvas.width,canvas.height)
   // player.draw(ctx)
   // player.upadte()
 
   function animate() {
     ctx.clearRect(0,0,canvas.width,canvas.height)
+    background.draw(ctx) //* this line draws the actual background image onto the canvas, the below lines do the same for the player
     player.draw(ctx)
     player.upadte(input)
     requestAnimationFrame(animate)
