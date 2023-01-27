@@ -51,8 +51,9 @@ window.addEventListener("load", function () {
     draw(context){
       context.fillStyle ='white'
      context.fillRect(this.x,this.y,this.width,this.height)
-     context.drawImage(this.image,this.frameX * this.width,this.frameX * this.height,this.width,this.height,this.x,this.y,this.width,this.height)
+     context.drawImage(this.image,this.frameX * this.width,this.frameY * this.height,this.width,this.height,this.x,this.y,this.width,this.height)
     //  1 * this.height,this.width,this.height,this.x,this.y,this.width,this.height
+    //* frameX and frameY is what makes it change the cureent sprite on the sprite sheet i.e movement 
     }
     upadte(input){
       
