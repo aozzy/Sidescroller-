@@ -105,12 +105,20 @@ window.addEventListener("load", function () {
       this.width = 2400
       this.height = 720
      //* this.width is the width of the background image in px this.height is the height
-
+     this.speed = 20
 
 
     }
     draw(context){
-      context.drawImage(this.image,this.x,this.y)
+      context.drawImage(this.image,this.x,this.y,this.width,this.height)
+      context.drawImage(this.image,this.x + this.width,this.y,this.width,this.height) //* this line makes it appear like endless scroll, two background images are drawn on the canvas i.e the line above
+    }
+    upadte(){
+    this.x  -= this.speed
+    if (this.x < 0 - this.width){
+      this.x = 0
+
+    }
     }
   }
 
@@ -129,6 +137,7 @@ window.addEventListener("load", function () {
   function animate() {
     ctx.clearRect(0,0,canvas.width,canvas.height)
     background.draw(ctx) //* this line draws the actual background image onto the canvas, the below lines do the same for the player
+    background.upadte()
     player.draw(ctx)
     player.upadte(input)
     requestAnimationFrame(animate)
