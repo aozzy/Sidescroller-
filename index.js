@@ -50,8 +50,8 @@ window.addEventListener("load", function () {
       this.weight = 1;
     }
     draw(context) {
-      context.fillStyle = "white";
-      context.fillRect(this.x, this.y, this.width, this.height);
+      // context.fillStyle = "white";
+      // context.fillRect(this.x, this.y, this.width, this.height);
       context.drawImage(
         this.image,
         this.frameX * this.width,
@@ -141,6 +141,11 @@ window.addEventListener("load", function () {
       this.x = this.gameWidth;
       this.y = this.gameHeight - this.height;
       this.frameX = 0;
+      this.maxFrame = 5
+      this.fps = 20
+      this.fameTimer = 0 
+      this.frameInterval = 1000/this.fps
+      this.speed = 8
     }
     draw(context) {
       context.drawImage(
@@ -156,16 +161,29 @@ window.addEventListener("load", function () {
       );
     }
   
-     update(){
-      this.x--
+     update(deltaTime){
+      if(this.fameTimer > this.frameInterval){
+
+        if(this.frameX >= this.maxFrame){
+          this.frameX = 0
+        }else{
+          this.frameX++
+          this.fameTimer = 0
+        }
+      }else{
+        this.fameTimer += deltaTime
+      }
+      this.x-= this.speed
      }
   
   }
 
   // enemies.push(new Enemy(canvas.width, canvas.height))
   function handleEnemy(deltaTime) {
-    if (enemieTimer > enemieInterval){
+    if (enemieTimer > enemieInterval + randomEnemyInterval){
       enemies.push(new Enemy(canvas.width, canvas.height))
+      randomEnemyInterval = Math.random() * 1000 + 500
+      
       enemieTimer = 0
     }else{
       enemieTimer += deltaTime
@@ -173,7 +191,7 @@ window.addEventListener("load", function () {
     enemies.forEach(enemy => {
       enemy.draw(ctx)
       // console.log(ctx);
-      enemy.update()
+      enemy.update(deltaTime)
     })
   }
 
@@ -185,6 +203,7 @@ window.addEventListener("load", function () {
   let lasTime = 0
   let enemieTimer = 0
   let enemieInterval = 1000
+  let randomEnemyInterval = Math.random() * 1000 + 500
   // const enemy_1 = new Enemy(canvas.width, canvas.height);
   // player.draw(ctx)
   // player.upadte()
