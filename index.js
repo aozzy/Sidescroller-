@@ -32,7 +32,7 @@ window.addEventListener("load", function () {
       });
     }
   }
-// console.log(ctx);
+  // console.log(ctx);
   class Player {
     constructor(gameWidth, gameHeight) {
       this.gameWidth = gameWidth;
@@ -41,95 +41,116 @@ window.addEventListener("load", function () {
       this.height = 200;
       this.x = 0;
       this.y = this.gameHeight - this.height;
-      this.image = document.getElementById('playerImage')
-      this.frameX = 0
-      this.frameY = 0
-      this.speed = 0
-      this.vy = 0
-      this.weight = 1
+      this.image = document.getElementById("playerImage");
+      this.frameX = 0;
+      this.frameY = 0;
+      this.speed = 0;
+      this.vy = 0;
+      this.weight = 1;
     }
-    draw(context){
-      context.fillStyle ='white'
-     context.fillRect(this.x,this.y,this.width,this.height)
-     context.drawImage(this.image,this.frameX * this.width,this.frameY * this.height,this.width,this.height,this.x,this.y,this.width,this.height)
-    //  1 * this.height,this.width,this.height,this.x,this.y,this.width,this.height
-    //* frameX and frameY is what makes it change the cureent sprite on the sprite sheet i.e movement 
+    draw(context) {
+      context.fillStyle = "white";
+      context.fillRect(this.x, this.y, this.width, this.height);
+      context.drawImage(
+        this.image,
+        this.frameX * this.width,
+        this.frameY * this.height,
+        this.width,
+        this.height,
+        this.x,
+        this.y,
+        this.width,
+        this.height
+      );
+      //  1 * this.height,this.width,this.height,this.x,this.y,this.width,this.height
+      //* frameX and frameY is what makes it change the cureent sprite on the sprite sheet i.e movement
     }
-    upadte(input){
-      
-      if (input.keys.indexOf('ArrowRight') > -1){
-        this.speed = 5
-      } else if (input.keys.indexOf('ArrowLeft') > -1){
-        this.speed = -5
+    upadte(input) {
+      if (input.keys.indexOf("ArrowRight") > -1) {
+        this.speed = 5;
+      } else if (input.keys.indexOf("ArrowLeft") > -1) {
+        this.speed = -5;
+      } else if (input.keys.indexOf("ArrowUp") > -1 && this.onGround()) {
+        this.vy -= 32;
+      } else {
+        this.speed = 0;
       }
-      else if(input.keys.indexOf('ArrowUp') > -1 && this.onGround()){
-       this.vy  -= 32
+      this.x += this.speed;
+      if (this.x < 0) {
+        this.x = 0;
+      } else if (this.x > this.gameWidth - this.width) {
+        this.x = this.gameWidth - this.width;
       }
-      
-      else{
-        this.speed = 0
+      this.y += this.vy;
+      if (!this.onGround()) {
+        this.vy += this.weight;
+        this.frameY = 1;
+      } else {
+        this.vy = 0;
+        this.frameY = 0;
       }
-      this.x += this.speed
-      if (this.x < 0 ){
-        this.x = 0
-      } else if (this.x > this.gameWidth - this.width){
-        this.x = this.gameWidth - this.width
-      }
-      this.y += this.vy
-      if(!this.onGround()){
-       this.vy += this.weight
-       this.frameY = 1
-      }else{
-        this.vy = 0
-        this.frameY = 0
-      }
-      if (this.y > this.gameHeight - this.height){
-        this.y = this.gameHeight - this.height
+      if (this.y > this.gameHeight - this.height) {
+        this.y = this.gameHeight - this.height;
       }
     }
-     
-    onGround(){
+
+    onGround() {
       // console.log(this.y);
-      return this.y >= this.gameHeight - this.height
-    } 
-  
+      return this.y >= this.gameHeight - this.height;
+    }
   }
 
   class Background {
-    constructor(gameWidth,gameHeight){
-      this.gameWidth = gameWidth
-      this.gameHeight = gameHeight
-      this.image = document.getElementById('backgroundImage')
-      this.x = 0 
-      this.y = 0
-      this.width = 2400
-      this.height = 720
-     //* this.width is the width of the background image in px this.height is the height
-     this.speed = 7
-
-
+    constructor(gameWidth, gameHeight) {
+      this.gameWidth = gameWidth;
+      this.gameHeight = gameHeight;
+      this.image = document.getElementById("backgroundImage");
+      this.x = 0;
+      this.y = 0;
+      this.width = 2400;
+      this.height = 720;
+      //* this.width is the width of the background image in px this.height is the height
+      this.speed = 7;
     }
-    draw(context){
-      context.drawImage(this.image,this.x,this.y,this.width,this.height)
-      context.drawImage(this.image,this.x + this.width - this.speed,this.y,this.width,this.height) //* this line makes it appear like endless scroll, two background images are drawn on the canvas i.e the line above
+    draw(context) {
+      context.drawImage(this.image, this.x, this.y, this.width, this.height);
+      context.drawImage(
+        this.image,
+        this.x + this.width - this.speed,
+        this.y,
+        this.width,
+        this.height
+      ); //* this line makes it appear like endless scroll, two background images are drawn on the canvas i.e the line above
     }
-    upadte(){
-    this.x  -= this.speed
-    if (this.x < 0 - this.width){
-      this.x = 0
-
-    }
+    upadte() {
+      this.x -= this.speed;
+      if (this.x < 0 - this.width) {
+        this.x = 0;
+      }
     }
   }
 
   class Enemy {
-    constructor(gameWidth,gameHeight){
-      this.gameWidth = gameWidth
-      this.gameHeight = gameHeight
-      this.width = 160
-      this.height = 119
-      this.image = document.getElementById('')
-
+    constructor(gameWidth, gameHeight) {
+      this.gameWidth = gameWidth;
+      this.gameHeight = gameHeight;
+      this.width = 160;
+      this.height = 119;
+      this.image = document.getElementById("enemieImage");
+      this.x = 0;
+      this.y = 0;
+    }
+    draw(context) {
+      context.drawImage(
+        this.image,
+        0 * this.width,
+        0,
+        this.width,
+        this.height,
+        this.x.this.y,
+        this.width,
+        this.height
+      );
     }
   }
 
@@ -138,18 +159,20 @@ window.addEventListener("load", function () {
   function displayStatusText() {}
 
   const input = new InputHandler();
-  const player = new Player(canvas.width,canvas.height)
-  const background = new Background(canvas.width,canvas.height)
+  const player = new Player(canvas.width, canvas.height);
+  const background = new Background(canvas.width, canvas.height);
+  const enemy_1 = new Enemy(canvas.width, canvas.height);
   // player.draw(ctx)
   // player.upadte()
 
   function animate() {
-    ctx.clearRect(0,0,canvas.width,canvas.height)
-    background.draw(ctx) //* this line draws the actual background image onto the canvas, the below lines do the same for the player
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    background.draw(ctx); //* this line draws the actual background image onto the canvas, the below lines do the same for the player
     // background.upadte()
-    player.draw(ctx)
-    player.upadte(input)
-    requestAnimationFrame(animate)
+    player.draw(ctx);
+    player.upadte(input);
+    enemy_1.draw(ctx);
+    requestAnimationFrame(animate);
   }
-  animate()
+  animate();
 });
