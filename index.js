@@ -100,9 +100,11 @@ window.addEventListener("load", function () {
       this.y += this.vy;
       if (!this.onGround()) {
         this.vy += this.weight;
+        this.maxFrame = 5
         this.frameY = 1;
       } else {
         this.vy = 0;
+        this.maxFrame = 8
         this.frameY = 0;
       }
       if (this.y > this.gameHeight - this.height) {
@@ -161,6 +163,7 @@ window.addEventListener("load", function () {
       this.fameTimer = 0 
       this.frameInterval = 1000/this.fps
       this.speed = 8
+      this.markedForDeletion = false
     }
     draw(context) {
       context.drawImage(
@@ -189,6 +192,9 @@ window.addEventListener("load", function () {
         this.fameTimer += deltaTime
       }
       this.x-= this.speed
+      if(this.x < 0 - this.width){
+        this.markedForDeletion = true
+      }
      }
   
   }
