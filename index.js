@@ -3,6 +3,7 @@ window.addEventListener("load", function () {
   const ctx = canvas.getContext("2d");
   canvas.width = 800;
   canvas.height = 720;
+  let enemies = []
 
   class InputHandler {
     constructor() {
@@ -137,42 +138,62 @@ window.addEventListener("load", function () {
       this.width = 160;
       this.height = 119;
       this.image = document.getElementById("enemieImage");
-      this.x = 0;
-      this.y = 0;
+      this.x = this.gameWidth;
+      this.y = this.gameHeight - this.height;
+      this.frameX = 0;
     }
     draw(context) {
       context.drawImage(
         this.image,
-        0 * this.width,
+        this.frameX * this.width,
         0,
         this.width,
         this.height,
-        this.x.this.y,
+        this.x,
+        this.y,
         this.width,
         this.height
       );
     }
+  
+     update(){
+      this.x--
+     }
+  
   }
 
-  function handleEnemy() {}
+  // enemies.push(new Enemy(canvas.width, canvas.height))
+  function handleEnemy() {
+    enemies.forEach(enemy => {
+      enemy.draw(ctx)
+      // console.log(ctx);
+      enemy.update()
+    })
+  }
 
   function displayStatusText() {}
 
   const input = new InputHandler();
   const player = new Player(canvas.width, canvas.height);
   const background = new Background(canvas.width, canvas.height);
-  const enemy_1 = new Enemy(canvas.width, canvas.height);
+  let lasTime = 0
+  // const enemy_1 = new Enemy(canvas.width, canvas.height);
   // player.draw(ctx)
   // player.upadte()
 
-  function animate() {
+  function animate(timeStamp) {
+    const deltaTime = timeStamp - lasTime
+    lasTime = timeStamp
+    // console.log(deltaTime);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     background.draw(ctx); //* this line draws the actual background image onto the canvas, the below lines do the same for the player
     // background.upadte()
     player.draw(ctx);
     player.upadte(input);
-    enemy_1.draw(ctx);
+    // enemy_1.draw(ctx);
+    // enemy_1.update()
+    handleEnemy(deltaTime)
     requestAnimationFrame(animate);
   }
-  animate();
+  animate(0);
 });
