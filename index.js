@@ -105,13 +105,13 @@ window.addEventListener("load", function () {
       this.width = 2400
       this.height = 720
      //* this.width is the width of the background image in px this.height is the height
-     this.speed = 20
+     this.speed = 7
 
 
     }
     draw(context){
       context.drawImage(this.image,this.x,this.y,this.width,this.height)
-      context.drawImage(this.image,this.x + this.width,this.y,this.width,this.height) //* this line makes it appear like endless scroll, two background images are drawn on the canvas i.e the line above
+      context.drawImage(this.image,this.x + this.width - this.speed,this.y,this.width,this.height) //* this line makes it appear like endless scroll, two background images are drawn on the canvas i.e the line above
     }
     upadte(){
     this.x  -= this.speed
@@ -122,7 +122,16 @@ window.addEventListener("load", function () {
     }
   }
 
-  class Enemy {}
+  class Enemy {
+    constructor(gameWidth,gameHeight){
+      this.gameWidth = gameWidth
+      this.gameHeight = gameHeight
+      this.width = 160
+      this.height = 119
+      this.image = document.getElementById('')
+
+    }
+  }
 
   function handleEnemy() {}
 
@@ -137,7 +146,7 @@ window.addEventListener("load", function () {
   function animate() {
     ctx.clearRect(0,0,canvas.width,canvas.height)
     background.draw(ctx) //* this line draws the actual background image onto the canvas, the below lines do the same for the player
-    background.upadte()
+    // background.upadte()
     player.draw(ctx)
     player.upadte(input)
     requestAnimationFrame(animate)
