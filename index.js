@@ -44,6 +44,10 @@ window.addEventListener("load", function () {
       this.y = this.gameHeight - this.height;
       this.image = document.getElementById("playerImage");
       this.frameX = 0;
+      this.maxFrame = 8
+      this.fps = 20
+      this.frameTimer = 0 
+      this.frameInterval = 1000/this.fps
       this.frameY = 0;
       this.speed = 0;
       this.vy = 0;
@@ -66,7 +70,18 @@ window.addEventListener("load", function () {
       //  1 * this.height,this.width,this.height,this.x,this.y,this.width,this.height
       //* frameX and frameY is what makes it change the cureent sprite on the sprite sheet i.e movement
     }
-    upadte(input) {
+    upadte(input,deltaTime) {
+      if(this.frameTimer > this.frameInterval){
+
+        if(this.frameX >= this.maxFrame){
+          this.frameX = 0
+        }else{
+          this.frameX++
+        }
+        this.frameTimer = 0
+      }else{
+        this.frameTimer += deltaTime
+      }
       if (input.keys.indexOf("ArrowRight") > -1) {
         this.speed = 5;
       } else if (input.keys.indexOf("ArrowLeft") > -1) {
@@ -216,7 +231,7 @@ window.addEventListener("load", function () {
     background.draw(ctx); //* this line draws the actual background image onto the canvas, the below lines do the same for the player
     // background.upadte()
     player.draw(ctx);
-    player.upadte(input);
+    player.upadte(input,deltaTime);
     // enemy_1.draw(ctx);
     // enemy_1.update()
     handleEnemy(deltaTime)
