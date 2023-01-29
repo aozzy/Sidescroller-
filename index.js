@@ -61,6 +61,11 @@ window.addEventListener("load", function () {
       context.beginPath()
       context.arc(this.x + this.width/2,this.y + this.height/2,this.width/2,0,Math.PI * 2)
       context.stroke()
+      context.strokeStyle = 'blue'
+      context.beginPath()
+      context.arc(this.x,this.y,this.width/2,0,Math.PI * 2)
+      context.stroke()
+
       // context.fillStyle = "white";
       // context.fillRect(this.x, this.y, this.width, this.height);
       context.drawImage(
@@ -84,7 +89,7 @@ window.addEventListener("load", function () {
         const dy = enemy.y - this.y
         const distance = Math.sqrt(dx * dx + dy * dy)
         if (distance < enemy.width/2 + this.width/2){
-
+         gameOver = true
         }
       } )
 
@@ -190,6 +195,10 @@ window.addEventListener("load", function () {
       context.beginPath()
       context.arc(this.x + this.width/2,this.y + this.height/2,this.width/2,0,Math.PI * 2)
       context.stroke()
+      context.strokeStyle = 'blue'
+      context.beginPath()
+      context.arc(this.x,this.y,this.width/2,0,Math.PI * 2)
+      context.stroke()
       context.drawImage(
         this.image,
         this.frameX * this.width,
@@ -249,6 +258,13 @@ window.addEventListener("load", function () {
     context.fillText(`Score : ${score}`,20,50)
     context.fillStyle = 'white'
     context.fillText(`Score : ${score}`,22,52)
+    if(gameOver){
+      context.textAlign = 'center'
+      context.fillStyle = 'black'
+      context.fillText(`Game over  try again your score is: ${score}`,canvas.width/2,200)
+    context.fillStyle = 'white'
+    context.fillText(`Game over  try again your score is: ${score}`,canvas.width/2,202)
+    }
   }
 
   const input = new InputHandler();
