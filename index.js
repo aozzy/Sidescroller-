@@ -5,6 +5,7 @@ window.addEventListener("load", function () {
   canvas.height = 720;
   let enemies = []
   let score = 0 
+  let gameOver = false
 
   class InputHandler {
     constructor() {
@@ -76,7 +77,19 @@ window.addEventListener("load", function () {
       //  1 * this.height,this.width,this.height,this.x,this.y,this.width,this.height
       //* frameX and frameY is what makes it change the cureent sprite on the sprite sheet i.e movement
     }
-    upadte(input,deltaTime) {
+    upadte(input,deltaTime,enemies) {
+    
+      enemies.forEach(enemy =>{
+        const dx = enemy.x - this.x
+        const dy = enemy.y - this.y
+        const distance = Math.sqrt(dx * dx + dy * dy)
+        if (distance < enemy.width/2 + this.width/2){
+
+        }
+      } )
+
+
+
       if(this.frameTimer > this.frameInterval){
 
         if(this.frameX >= this.maxFrame){
@@ -257,12 +270,15 @@ window.addEventListener("load", function () {
     background.draw(ctx); //* this line draws the actual background image onto the canvas, the below lines do the same for the player
     // background.upadte()
     player.draw(ctx);
-    player.upadte(input,deltaTime);
+    player.upadte(input,deltaTime,enemies);
     // enemy_1.draw(ctx);
     // enemy_1.update()
     handleEnemy(deltaTime)
     displayStatusText(ctx)
-    requestAnimationFrame(animate);
+    if(!gameOver){
+
+      requestAnimationFrame(animate);
+    }
   }
   animate(0);
 });
