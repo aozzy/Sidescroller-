@@ -214,6 +214,8 @@ window.addEventListener("load", function () {
       // console.log(ctx);
       enemy.update(deltaTime)
     })
+    enemies = enemies.filter(enemy => !enemy.markedForDeletion)
+    console.log(enemies);
   }
 
   function displayStatusText() {}
