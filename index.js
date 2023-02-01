@@ -55,6 +55,12 @@ window.addEventListener("load", function () {
       this.vy = 0;
       this.weight = 1;
     }
+    
+    restart(){
+      this.x = 0;
+      this.y = this.gameHeight - this.height;
+    }
+
     draw(context) {
       // context.strokeStyle = 'white'
       // context.strokeRect(this.x,this.y,this.width,this.height)
@@ -267,7 +273,9 @@ window.addEventListener("load", function () {
     context.fillText(`Game over  try again your score is ${score}`,canvas.width/2,202)
     }
   }
+function restartGame(){
 
+}
   const input = new InputHandler();
   const player = new Player(canvas.width, canvas.height);
   const background = new Background(canvas.width, canvas.height);
