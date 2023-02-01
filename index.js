@@ -42,7 +42,7 @@ window.addEventListener("load", function () {
       this.gameHeight = gameHeight;
       this.width = 200;
       this.height = 200;
-      this.x = 0;
+      this.x = 100;
       this.y = this.gameHeight - this.height;
       this.image = document.getElementById("playerImage");
       this.frameX = 0;
@@ -57,8 +57,10 @@ window.addEventListener("load", function () {
     }
     
     restart(){
-      this.x = 0;
+      this.x = 100;
       this.y = this.gameHeight - this.height;
+      this.maxFrame = 8
+      this.frameY = 0;
     }
 
     draw(context) {
@@ -161,6 +163,11 @@ window.addEventListener("load", function () {
       //* this.width is the width of the background image in px this.height is the height
       this.speed = 7;
     }
+    restart(){
+      this.x = 0;
+
+    }
+
     draw(context) {
       context.drawImage(this.image, this.x, this.y, this.width, this.height);
       context.drawImage(
@@ -196,6 +203,9 @@ window.addEventListener("load", function () {
       this.speed = 8
       this.markedForDeletion = false
     }
+    // restart(){
+
+    // }
     draw(context) {
       // context.strokeStyle = 'white'
       // context.strokeRect(this.x,this.y,this.width,this.height)
@@ -274,7 +284,11 @@ window.addEventListener("load", function () {
     }
   }
 function restartGame(){
-
+player.restart()
+background.restart()
+ enemies = []
+ score = 0 
+ gameOver = false
 }
   const input = new InputHandler();
   const player = new Player(canvas.width, canvas.height);
