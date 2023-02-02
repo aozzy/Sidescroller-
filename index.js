@@ -271,6 +271,7 @@ window.addEventListener("load", function () {
   }
 
   function displayStatusText(context) {
+    context.textAlign = 'left'
     context.font = '40px Helvetica'
     context.fillStyle = 'black'
     context.fillText(`Score: ${score}`,20,50)
@@ -279,9 +280,9 @@ window.addEventListener("load", function () {
     if(gameOver){
       context.textAlign = 'center'
       context.fillStyle = 'black'
-      context.fillText(`Game over  try again your score is ${score}`,canvas.width/2,200)
+      context.fillText(`Game over press Enter to restart`,canvas.width/2,200)
     context.fillStyle = 'white'
-    context.fillText(`Game over  try again your score is ${score}`,canvas.width/2,202)
+    context.fillText(`Game over press Enter to restart`,canvas.width/2,202)
     }
   }
 function restartGame(){
