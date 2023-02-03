@@ -34,6 +34,16 @@ window.addEventListener("load", function () {
         }
         // console.log(e.key, this.keys,'goodbye');
       });
+      window.addEventListener('touchstart',e =>{
+
+      })
+      window.addEventListener('touchmove',e =>{
+
+      })
+      window.addEventListener('touchend',e =>{
+
+      })
+
     }
   }
   // console.log(ctx);
