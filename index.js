@@ -11,6 +11,7 @@ window.addEventListener("load", function () {
     constructor() {
       this.keys = [];
       this.touchY = ''
+      this.touchTreshold = 30
       window.addEventListener("keydown", (e) => {
         if (
           (e.key === "ArrowDown" ||
@@ -36,11 +37,13 @@ window.addEventListener("load", function () {
         // console.log(e.key, this.keys,'goodbye');
       });
       window.addEventListener('touchstart',e =>{
-       console.log('start');
-       console.log(e.changedTouches[0]);
+       this.touchY = e.changedTouches[0].pageY
       })
       window.addEventListener('touchmove',e =>{
-       console.log('move');
+      const swipeDistance = e.changedTouches[0].pageY - this.touchY
+      if(swipeDistance < -this.touchTreshold){
+       this.keys.push('swipe up')
+      }
       })
       window.addEventListener('touchend',e =>{
       console.log('end');
