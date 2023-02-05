@@ -10,6 +10,7 @@ window.addEventListener("load", function () {
   class InputHandler {
     constructor() {
       this.keys = [];
+      this.touchY = ''
       window.addEventListener("keydown", (e) => {
         if (
           (e.key === "ArrowDown" ||
@@ -35,13 +36,14 @@ window.addEventListener("load", function () {
         // console.log(e.key, this.keys,'goodbye');
       });
       window.addEventListener('touchstart',e =>{
-
+       console.log('start');
+       console.log(e.changedTouches[0]);
       })
       window.addEventListener('touchmove',e =>{
-
+       console.log('move');
       })
       window.addEventListener('touchend',e =>{
-
+      console.log('end');
       })
 
     }
@@ -110,7 +112,7 @@ window.addEventListener("load", function () {
         const distance = Math.sqrt(dx * dx + dy * dy)
         if (distance < enemy.width/2 + this.width/2){
          gameOver = true
-         console.log(gameOver);
+        
         }
       } )
 
@@ -177,7 +179,7 @@ window.addEventListener("load", function () {
     }
     restart(){
       this.x = 0;
-      console.log(this.x);
+     
 
     }
 
