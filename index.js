@@ -23,7 +23,7 @@ window.addEventListener("load", function () {
           this.keys.push(e.key);
         }
         else if (e.key === 'Enter' && gameOver) restartGame()
-        // console.log(e.key, this.keys,'hello');
+        console.log(e.key, this.keys,'hello');
       });
       window.addEventListener("keyup", (e) => {
         if (
@@ -51,7 +51,7 @@ window.addEventListener("load", function () {
 
     }
   }
-  // console.log(ctx);
+  console.log(ctx);
   class Player {
     constructor(gameWidth, gameHeight) {
       this.gameWidth = gameWidth;
