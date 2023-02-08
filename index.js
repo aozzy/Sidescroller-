@@ -34,7 +34,7 @@ window.addEventListener("load", function () {
         ) {
           this.keys.splice(this.keys.indexOf(e.key), 1);
         }
-        // console.log(e.key, this.keys,'goodbye');
+        console.log(e.key, this.keys,'goodbye');
       });
       window.addEventListener('touchstart',e =>{
        this.touchY = e.changedTouches[0].pageY
@@ -165,7 +165,7 @@ window.addEventListener("load", function () {
     }
 
     onGround() {
-      // console.log(this.y);
+      console.log(this.y);
       return this.y >= this.gameHeight - this.height;
     }
   }
