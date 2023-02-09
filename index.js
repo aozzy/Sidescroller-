@@ -48,12 +48,14 @@ window.addEventListener("load", function () {
       }
       })
       window.addEventListener('touchend',e =>{
-      console.log('end');
+      console.log(this.keys);
+      this.keys.splice(this.keys.indexOf('swipe up'),1)
+      this.keys.splice(this.keys.indexOf('swipe down'),1)
       })
 
     }
   }
-  console.log(ctx);
+  // console.log(ctx);
   class Player {
     constructor(gameWidth, gameHeight) {
       this.gameWidth = gameWidth;
@@ -165,7 +167,7 @@ window.addEventListener("load", function () {
     }
 
     onGround() {
-      console.log(this.y);
+      // console.log(this.y);
       return this.y >= this.gameHeight - this.height;
     }
   }
