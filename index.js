@@ -46,6 +46,9 @@ window.addEventListener("load", function () {
       }else if (swipeDistance > this.touchTreshold && this.keys.indexOf('swipe down') === -1){
         this.keys.push('swipe down')
       }
+      if(gameOver){
+        restartGame()
+      }
       })
       window.addEventListener('touchend',e =>{
       console.log(this.keys);
@@ -140,7 +143,7 @@ window.addEventListener("load", function () {
         this.speed = 5;
       } else if (input.keys.indexOf("ArrowLeft") > -1) {
         this.speed = -5;
-      } else if (input.keys.indexOf("ArrowUp") > -1 && this.onGround()) {
+      } else if ((input.keys.indexOf("ArrowUp") > -1 || input.keys.indexOf('ArrowUp') > -1) && this.onGround()) {
         this.vy -= 32;
       } else {
         this.speed = 0;
