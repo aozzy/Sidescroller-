@@ -132,6 +132,7 @@ window.addEventListener("load", function () {
 
         if(this.frameX >= this.maxFrame){
           this.frameX = 0
+          console.log(this.frameX);
         }else{
           this.frameX++
         }
@@ -141,6 +142,7 @@ window.addEventListener("load", function () {
       }
       if (input.keys.indexOf("ArrowRight") > -1) {
         this.speed = 5;
+        console.log(this.speed);
       } else if (input.keys.indexOf("ArrowLeft") > -1) {
         this.speed = -5;
       } else if ((input.keys.indexOf("ArrowUp") > -1 || input.keys.indexOf('ArrowUp') > -1) && this.onGround()) {
