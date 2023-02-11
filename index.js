@@ -261,6 +261,7 @@ window.addEventListener("load", function () {
 
         if(this.frameX >= this.maxFrame){
           this.frameX = 0
+          console.log(this.frameX);
         }else{
           this.frameX++
           this.fameTimer = 0
@@ -284,6 +285,7 @@ window.addEventListener("load", function () {
       randomEnemyInterval = Math.random() * 1000 + 500
       
       enemieTimer = 0
+      console.log(enemieTimer);
     }else{
       enemieTimer += deltaTime
     }
