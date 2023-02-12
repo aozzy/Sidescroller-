@@ -145,7 +145,7 @@ window.addEventListener("load", function () {
         console.log(this.speed);
       } else if (input.keys.indexOf("ArrowLeft") > -1) {
         this.speed = -5;
-      } else if ((input.keys.indexOf("ArrowUp") > -1 || input.keys.indexOf('ArrowUp') > -1) && this.onGround()) {
+      } else if ((input.keys.indexOf("ArrowUp") > -1 || input.keys.indexOf('ArrowUp') > -1 || input.keys.indexOf('swipe up') > -1) && this.onGround()) {
         this.vy -= 32;
       } else {
         this.speed = 0;
@@ -308,9 +308,9 @@ window.addEventListener("load", function () {
     if(gameOver){
       context.textAlign = 'center'
       context.fillStyle = 'black'
-      context.fillText(`Game over press Enter to restart`,canvas.width/2,200)
+      context.fillText(`Game over press Enter or swipe up to restart`,canvas.width/2,200)
     context.fillStyle = 'white'
-    context.fillText(`Game over press Enter to restart`,canvas.width/2,202)
+    context.fillText(`Game over press Enter or swipe up to restart`,canvas.width/2,202)
     }
   }
 function restartGame(){
