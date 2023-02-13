@@ -168,6 +168,7 @@ window.addEventListener("load", function () {
       }
       if (this.y > this.gameHeight - this.height) {
         this.y = this.gameHeight - this.height;
+        console.log(this.y);
       }
     }
 
@@ -191,6 +192,7 @@ window.addEventListener("load", function () {
     }
     restart(){
       this.x = 0;
+      console.log(this.x);
      
 
     }
