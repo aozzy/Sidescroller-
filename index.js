@@ -321,11 +321,13 @@ window.addEventListener("load", function () {
     console.log(document.fullscreenElement);
     if(!document.fullscreenElement){
       canvas.requestFullscreen().catch(err=>{
-        alert(`Error can't enable full-screen mode: ${err}`)
+        alert(`Error can't enable full-screen mode: ${err.message}`)
       })
+    }else{
+      document.exitFullscreen()
     }
   }
-toggleFullScreen()
+fullScreen.addEventListener('click',toggleFullScreen)
 function restartGame(){
 player.restart()
 background.restart()
