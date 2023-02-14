@@ -319,8 +319,8 @@ window.addEventListener("load", function () {
 
   function toggleFullScreen(){
     console.log(document.fullscreenElement);
-    if(document.fullscreenElement){
-      console.log('yoooo');
+    if(!document.fullscreenElement){
+      canvas.requestFullscreen().then().catch()
     }
   }
 toggleFullScreen()
