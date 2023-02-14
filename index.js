@@ -1,6 +1,7 @@
 window.addEventListener("load", function () {
   const canvas = document.getElementById("canvas1");
   const ctx = canvas.getContext("2d");
+  const fullScreen = document.getElementById('fullScreenButton')
   canvas.width = 800;
   canvas.height = 720;
   let enemies = []
@@ -315,6 +316,14 @@ window.addEventListener("load", function () {
     context.fillText(`Game over press Enter or swipe up to restart`,canvas.width/2,202)
     }
   }
+
+  function toggleFullScreen(){
+    console.log(document.fullscreenElement);
+    if(document.fullscreenElement){
+      console.log('yoooo');
+    }
+  }
+toggleFullScreen()
 function restartGame(){
 player.restart()
 background.restart()
