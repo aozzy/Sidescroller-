@@ -259,7 +259,12 @@ window.addEventListener("load", function () {
         this.y,
         this.width,
         this.height
-      );
+        );
+        context.lineWidth = 5
+         context.strokeStyle = 'white'
+         context.beginPath()
+         context.arc(this.x + this.width/2, this.y + this.height/2, this.width/2,0,Math.PI * 2 )
+        context.stroke()
     }
   
      update(deltaTime){
