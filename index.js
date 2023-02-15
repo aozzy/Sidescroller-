@@ -126,7 +126,8 @@ window.addEventListener("load", function () {
         const distance = Math.sqrt(dx * dx + dy * dy)
         if (distance < enemy.width/2 + this.width/2){
          gameOver = true
-        
+         console.log(gameOver);
+        console.log(distance);
         }
       } )
 
