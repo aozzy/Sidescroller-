@@ -100,7 +100,7 @@ window.addEventListener("load", function () {
        context.lineWidth = 5
        context.strokeStyle = 'white'
        context.beginPath()
-       context.arc(this.x + this.width/2, this.y + this.height/2 + 20, this.width/3,0,Math.PI * 2 )
+       context.arc(this.x + this.width/2, this.y + this.height/2 - 20, this.width/3,0,Math.PI * 2 )
       context.stroke()
       //* uncomment out the above code if you want to see the collosion detction areas in blue and white do the same for draw method in the Enemy class
       //* the only thing you need is the context.drawImage method in this draw function
@@ -121,10 +121,10 @@ window.addEventListener("load", function () {
     upadte(input,deltaTime,enemies) {
     
       enemies.forEach(enemy =>{
-        const dx = (enemy.x + enemy.width/2) - (this.x + this.width/2)
+        const dx = (enemy.x + enemy.width/2 - 20) - (this.x + this.width/2)
         const dy = (enemy.y + enemy.height/2) - (this.y + this.height/2 + 20)
         const distance = Math.sqrt(dx * dx + dy * dy)
-        if (distance < enemy.width/2 + this.width/3){
+        if (distance < enemy.width/3 + this.width/3){
          gameOver = true
          console.log(gameOver);
         console.log(distance);
