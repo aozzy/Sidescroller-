@@ -277,6 +277,8 @@ window.addEventListener("load", function () {
         }else{
           this.frameX++
           this.fameTimer = 0
+        console.log(this.frameX);
+        console.log(this.frameTimer);  
         }
       }else{
         this.fameTimer += deltaTime
