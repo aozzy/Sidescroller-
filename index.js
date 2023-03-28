@@ -24,7 +24,7 @@ window.addEventListener("load", function () {
           this.keys.push(e.key);
         }
         else if (e.key === 'Enter' && gameOver) restartGame()
-        console.log(e.key, this.keys,'hello');
+       
       });
       window.addEventListener("keyup", (e) => {
         if (
@@ -35,7 +35,7 @@ window.addEventListener("load", function () {
         ) {
           this.keys.splice(this.keys.indexOf(e.key), 1);
         }
-        console.log(e.key, this.keys,'goodbye');
+       
       });
       window.addEventListener('touchstart',e =>{
        this.touchY = e.changedTouches[0].pageY
@@ -52,14 +52,14 @@ window.addEventListener("load", function () {
       }
       })
       window.addEventListener('touchend',e =>{
-      console.log(this.keys);
+   
       this.keys.splice(this.keys.indexOf('swipe up'),1)
       this.keys.splice(this.keys.indexOf('swipe down'),1)
       })
 
     }
   }
-  // console.log(ctx);
+
   class Player {
     constructor(gameWidth, gameHeight) {
       this.gameWidth = gameWidth;
@@ -126,8 +126,7 @@ window.addEventListener("load", function () {
         const distance = Math.sqrt(dx * dx + dy * dy)
         if (distance < enemy.width/3 + this.width/3){
          gameOver = true
-         console.log(gameOver);
-        console.log(distance);
+        
         }
       } )
 
@@ -137,7 +136,7 @@ window.addEventListener("load", function () {
 
         if(this.frameX >= this.maxFrame){
           this.frameX = 0
-          console.log(this.frameX);
+       
         }else{
           this.frameX++
         }
@@ -147,7 +146,7 @@ window.addEventListener("load", function () {
       }
       if (input.keys.indexOf("ArrowRight") > -1) {
         this.speed = 5;
-        console.log(this.speed);
+      
       } else if (input.keys.indexOf("ArrowLeft") > -1) {
         this.speed = -5;
       } else if ((input.keys.indexOf("ArrowUp") > -1 || input.keys.indexOf('ArrowUp') > -1 || input.keys.indexOf('swipe up') > -1) && this.onGround()) {
@@ -173,12 +172,12 @@ window.addEventListener("load", function () {
       }
       if (this.y > this.gameHeight - this.height) {
         this.y = this.gameHeight - this.height;
-        console.log(this.y);
+   
       }
     }
 
     onGround() {
-      // console.log(this.y);
+  
       return this.y >= this.gameHeight - this.height;
     }
   }
@@ -197,7 +196,7 @@ window.addEventListener("load", function () {
     }
     restart(){
       this.x = 0;
-      console.log(this.x);
+    
      
 
     }
@@ -273,12 +272,11 @@ window.addEventListener("load", function () {
 
         if(this.frameX >= this.maxFrame){
           this.frameX = 0
-          console.log(this.frameX);
+       
         }else{
           this.frameX++
           this.fameTimer = 0
-        console.log(this.frameX);
-        console.log(this.frameTimer);  
+      
         }
       }else{
         this.fameTimer += deltaTime
@@ -299,13 +297,13 @@ window.addEventListener("load", function () {
       randomEnemyInterval = Math.random() * 1000 + 500
       
       enemieTimer = 0
-      console.log(enemieTimer);
+    
     }else{
       enemieTimer += deltaTime
     }
     enemies.forEach(enemy => {
       enemy.draw(ctx)
-      // console.log(ctx);
+     
       enemy.update(deltaTime)
     })
     enemies = enemies.filter(enemy => !enemy.markedForDeletion)
@@ -329,7 +327,7 @@ window.addEventListener("load", function () {
   }
 
   function toggleFullScreen(){
-    console.log(document.fullscreenElement);
+  
     if(!document.fullscreenElement){
       canvas.requestFullscreen().catch(err=>{
         alert(`Error can't enable full-screen mode: ${err.message}`)
@@ -361,7 +359,7 @@ background.restart()
   function animate(timeStamp) {
     const deltaTime = timeStamp - lasTime
     lasTime = timeStamp
-    // console.log(deltaTime);
+   
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     background.draw(ctx); //* this line draws the actual background image onto the canvas, the below lines do the same for the player
     // background.upadte()
